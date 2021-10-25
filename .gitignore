@@ -1,0 +1,15 @@
+.vs
+Debug
+Release
+
+Suzu/Debug
+Suzu/Release
+
+MyGame/Debug
+MyGame/Release
+
+glfw
+glfw/build
+
+out
+x64

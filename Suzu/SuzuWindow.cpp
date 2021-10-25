@@ -1,0 +1,48 @@
+#include "pch.h"
+#include "SuzuWindow.h"
+#include "GLFWimpl/GlfwImplementation.h"
+
+namespace Suzu
+{
+	SuzuWindow::SuzuWindow()
+	{
+#ifdef SUZU_WINDOWS
+		mWindow = new GlfwImplementation();
+#elif SUZU_MAC
+		mWindow = new GlfwImplementation();
+#elif SUZU_LINUX
+		mWindow = new GlfwImplementation();
+#else
+		#only_Windows_Linux_Mac are supported
+#endif 
+		
+
+		mWindow->Init();
+	}
+
+	void SuzuWindow::CreateWindow(int width, int height, const std::string& name)
+	{
+		mWindow->CreateWindow(width, height, name);
+	}
+
+	void SuzuWindow::SwapBuffers()
+	{
+		mWindow->SwapBuffers();
+	}
+
+	void SuzuWindow::PollEvents()
+	{
+		mWindow->PollEvents();
+	}
+
+	int SuzuWindow::GetWindowWidth() const
+	{
+		return mWindow->GetWindowWidth();
+	}
+
+	int SuzuWindow::GetWindowHeight() const
+	{
+		return mWindow->GetWindowHeight();
+	}
+
+}
