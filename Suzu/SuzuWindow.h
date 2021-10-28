@@ -1,5 +1,6 @@
 #pragma once
 
+#include "pch.h"
 #include "SuzuUtils.h"
 #include "WindowImplementation.h"
 
@@ -16,6 +17,6 @@ namespace Suzu
 		int GetWindowHeight() const;
 	
 	private:
-		WindowImplementation* mWindow;
+		std::unique_ptr<WindowImplementation> mWindow;
 	};
 }

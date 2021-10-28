@@ -7,11 +7,11 @@ namespace Suzu
 	SuzuWindow::SuzuWindow()
 	{
 #ifdef SUZU_WINDOWS
-		mWindow = new GlfwImplementation();
+		mWindow = std::unique_ptr<WindowImplementation>{ new GlfwImplementation() };
 #elif SUZU_MAC
-		mWindow = new GlfwImplementation();
+		mWindow = std::unique_ptr<WindowImplementation>{ new GlfwImplementation() };
 #elif SUZU_LINUX
-		mWindow = new GlfwImplementation();
+		mWindow = std::unique_ptr<WindowImplementation>{ new GlfwImplementation() };
 #else
 		#only_Windows_Linux_Mac are supported
 #endif 
