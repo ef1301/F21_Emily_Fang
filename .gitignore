@@ -8,7 +8,6 @@ Suzu/Release
 MyGame/Debug
 MyGame/Release
 
-glfw
 glfw/build
 
 out
