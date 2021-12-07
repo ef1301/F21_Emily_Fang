@@ -12,3 +12,6 @@ glfw/build
 
 out
 x64
+
+stbi/Debug
+stbi/Release

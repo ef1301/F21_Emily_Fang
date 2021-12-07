@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.20)
+cmake_minimum_required(VERSION 3.18)
 
 project(my_game)
 
@@ -15,7 +15,10 @@ elseif(UNIX)
 	add_definitions(-DSUZU_LINUX)
 endif()
 
+add_definitions(-DSUZU_OPENGL)
 
 add_subdirectory(MyGame)
 add_subdirectory(Suzu)
 add_subdirectory(glfw)
+add_subdirectory(glad)
+add_subdirectory(stbi)

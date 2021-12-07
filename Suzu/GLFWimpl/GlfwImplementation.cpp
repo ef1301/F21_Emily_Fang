@@ -11,6 +11,7 @@ namespace Suzu
 	void GlfwImplementation::CreateWindow(int width, int height,const std::string& name)
 	{
 		mWindow = glfwCreateWindow(width, height, name.c_str(), NULL, NULL);
+		glfwMakeContextCurrent(mWindow);
 	}
 	void GlfwImplementation::SwapBuffers()
 	{
