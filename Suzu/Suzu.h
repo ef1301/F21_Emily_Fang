@@ -4,6 +4,7 @@
 #include "SuzuApp.h"
 #include "SuzuWindow.h"
 #include "Sprite.h"
+#include "Renderer.h"
 
 #define START_SUZU_GAME(classname) \
 int main()\

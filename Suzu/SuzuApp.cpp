@@ -14,7 +14,7 @@
 namespace Suzu {
 	void SuzuApp::Run()
 	{
-		std::cout << "Suzu running...." << std::endl;
+		SUZU_LOG("Suzu running....");
 
 		mGameWindow.CreateWindow(800, 600, "Test");
 
@@ -22,15 +22,17 @@ namespace Suzu {
 
 		// Shaders
 		Suzu::Shader myShader;
-		myShader.Load("C:/Users/Emily/source/repos/F21_Emily_Fang/Suzu/Assets/Shaders/myVertexShader.glsl",
-			"C:/Users/Emily/source/repos/F21_Emily_Fang/Suzu/Assets/Shaders/myFragmentShader.glsl");
+		myShader.Load("/Assets/Shaders/myVertexShader.glsl",
+			"/Assets/Shaders/myFragmentShader.glsl");
 		myShader.SetVec2IntUniform("screenSize",
 			mGameWindow.GetWindowWidth(),
 			mGameWindow.GetWindowHeight());
 		// TEXTURE
 
 		Suzu::Sprite fish;
-		fish.LoadImage("C:/Users/Emily/source/repos/F21_Emily_Fang/Suzu/Assets/Textures/test.png");
+		fish.LoadImage("/Assets/Textures/test.png");
+
+		mTimeOfNextFrame = std::chrono::steady_clock::now() + mFrameDuration;
 
 		while (true) 
 		{
@@ -40,9 +42,13 @@ namespace Suzu {
 
 			Renderer::Draw(fish, 100, 50, fish.GetWidth(), fish.GetHeight(), myShader);
 
+			std::this_thread::sleep_until(mTimeOfNextFrame);
+
 			mGameWindow.SwapBuffers();
 
 			mGameWindow.PollEvents();
+
+			mTimeOfNextFrame += mFrameDuration;
 		}
 
 		Renderer::ShutDown();

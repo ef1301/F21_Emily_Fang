@@ -9,3 +9,9 @@
 #else 
 	#define SUZU_API
 #endif
+
+#ifdef SUZU_DEBUG
+	#define SUZU_LOG(x) std::cout << x << std::endl;
+#else 
+	#define SUZU_LOG(x)
+#endif
