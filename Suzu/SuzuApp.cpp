@@ -4,6 +4,7 @@
 #include "SuzuApp.h"
 #include "Sprite.h"
 #include "Shader.h"
+//#include "Events.h"
 
 #define GLFW_INCLUDE_NONE
 #include "GLFW/glfw3.h"
@@ -18,6 +19,10 @@ namespace Suzu {
 
 		mGameWindow.CreateWindow(800, 600, "Test");
 
+		/*mGameWindow.SetKeyPressedCallback([this](KeyPressedEvent& event) {
+			OnKeyPressed(event);
+			});
+			*/
 		Renderer::Init();
 
 		// Shaders
@@ -58,6 +63,12 @@ namespace Suzu {
 	{
 
 	}
+
+	void SuzuApp::OnKeyPressed(KeyPressedEvent& event)
+	{
+		SUZU_LOG(event.GetKeyCode());
+	}
+
 	SuzuApp::SuzuApp()
 	{
 

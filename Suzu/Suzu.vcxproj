@@ -147,6 +147,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="GLFWImpl\GlfwImplementation.h" />
+    <ClInclude Include="Events.h" />
     <ClInclude Include="OpenGLimpl\OpenGLRenderer.h" />
     <ClInclude Include="OpenGLimpl\OpenGLShader.h" />
     <ClInclude Include="OpenGLimpl\OpenGLSprite.h" />
@@ -164,6 +165,7 @@
     <ClInclude Include="WindowImplementation.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Events.cpp" />
     <ClCompile Include="GLFWImpl\GlfwImplementation.cpp" />
     <ClCompile Include="OpenGLimpl\OpenGLRenderer.cpp" />
     <ClCompile Include="OpenGLimpl\OpenGLShader.cpp" />

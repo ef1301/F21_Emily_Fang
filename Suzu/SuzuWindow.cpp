@@ -45,4 +45,9 @@ namespace Suzu
 		return mWindow->GetWindowHeight();
 	}
 
+	void SuzuWindow::SetKeyPressedCallback(std::function<void(KeyPressedEvent&)> func)
+	{
+		mWindow->SetKeyPressedCallback(func);
+	}
+
 }

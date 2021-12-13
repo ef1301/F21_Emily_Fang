@@ -11,6 +11,7 @@ namespace Suzu {
 	public:
 		void Run();
 		virtual void OnUpdate();
+		virtual void OnKeyPressed(KeyPressedEvent & event);
 	protected:
 		SuzuApp();
 	private:

@@ -13,8 +13,13 @@ namespace Suzu
 		virtual void PollEvents() override;
 		virtual int GetWindowWidth() const override;
 		virtual int GetWindowHeight() const override;
+		virtual void SetKeyPressedCallback(std::function<void(KeyPressedEvent&)> func) override;
 
 	private:
+		struct CallbackFunctions
+		{
+			std::function<void(KeyPressedEvent&)> KeyPressedCallback;
+		} mCallbacks;
 		GLFWwindow* mWindow;
 
 	};
