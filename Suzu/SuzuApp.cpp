@@ -7,7 +7,7 @@
 //#include "Events.h"
 
 #define GLFW_INCLUDE_NONE
-#include "GLFW/glfw3.h"
+//#include "GLFW/glfw3.h"
 #include "glad/glad.h"
 
 #include "stb_image.h"
@@ -19,23 +19,23 @@ namespace Suzu {
 
 		mGameWindow.CreateWindow(800, 600, "Test");
 
-		/*mGameWindow.SetKeyPressedCallback([this](KeyPressedEvent& event) {
+		mGameWindow.SetKeyPressedCallback([this](KeyPressedEvent& event) {
 			OnKeyPressed(event);
 			});
-			*/
+			
 		Renderer::Init();
 
 		// Shaders
 		Suzu::Shader myShader;
-		myShader.Load("/Assets/Shaders/myVertexShader.glsl",
-			"/Assets/Shaders/myFragmentShader.glsl");
+		myShader.Load("Assets/Shaders/myVertexShader.glsl",
+			"Assets/Shaders/myFragmentShader.glsl");
 		myShader.SetVec2IntUniform("screenSize",
 			mGameWindow.GetWindowWidth(),
 			mGameWindow.GetWindowHeight());
 		// TEXTURE
 
 		Suzu::Sprite fish;
-		fish.LoadImage("/Assets/Textures/test.png");
+		fish.LoadImage("Assets/Textures/test.png");
 
 		mTimeOfNextFrame = std::chrono::steady_clock::now() + mFrameDuration;
 

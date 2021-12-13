@@ -4,7 +4,7 @@
 
 namespace Suzu
 {
-	class KeyPressedEvent
+	class SUZU_API KeyPressedEvent
 	{
 	public:
 		KeyPressedEvent(int keyCode);
