@@ -114,7 +114,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>SUZU_LIB;SUZU_WINDOWS;SUZU_OPENGL</PreprocessorDefinitions>
+      <PreprocessorDefinitions>SUZU_LIB;SUZU_WINDOWS;SUZU_OPENGL;SUZU_DEBUG</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
@@ -147,6 +147,7 @@
   <ItemGroup>
     <ClInclude Include="GLFWImpl\GlfwImplementation.h" />
     <ClInclude Include="Events.h" />
+    <ClInclude Include="KeyCodes.h" />
     <ClInclude Include="OpenGLimpl\OpenGLRenderer.h" />
     <ClInclude Include="OpenGLimpl\OpenGLShader.h" />
     <ClInclude Include="OpenGLimpl\OpenGLSprite.h" />

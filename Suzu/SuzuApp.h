@@ -12,6 +12,8 @@ namespace Suzu {
 		void Run();
 		virtual void OnUpdate();
 		virtual void OnKeyPressed(KeyPressedEvent & event);
+		int GetGameWindowWidth() const;
+		int GetGameWindowHeight() const;
 	protected:
 		SuzuApp();
 	private:
