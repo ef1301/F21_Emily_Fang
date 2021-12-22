@@ -6,5 +6,6 @@
 class Monster: public Unit {
   using Unit::Unit;
   public:
+  void Move();
   void UpdatePosition() override;
 };

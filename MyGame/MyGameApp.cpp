@@ -30,6 +30,19 @@ void NewMonster(std::vector<Monster>& monsters)
 		monsters.back().SetDirection(newDir);
 }
 
+Unit::Direction RandomDirection() {
+  Unit::Direction newDir;
+  int dirVal{ rand() % 4 };
+  if (dirVal == 0)
+    return Unit::Direction::Down;
+  else if (dirVal == 1)
+    return Unit::Direction::Up;
+  else if (dirVal == 2)
+    return Unit::Direction::Left;
+  else
+    return Unit::Direction::Right;
+}
+
 void MyGameApp::OnUpdate()
 {
 	mHero.UpdatePosition();
@@ -51,6 +64,10 @@ void MyGameApp::OnUpdate()
 	{
     if (mHero.CollideWith(*it)) {
       it = mMonsters.erase(it);
+    }
+    else if (it->IsAtEdge()) {
+      it->SetDirection(RandomDirection());
+      it->UpdatePosition();
     }
 		else it++;
 	}
