@@ -26,13 +26,17 @@ public:
 
 	Unit::Direction GetDirection() const;
 	void SetDirection(Unit::Direction newDirection);
-	void UpdatePosition();
+	Unit::Direction GetFacing() const;
+	void UpdateFacing();
+	virtual void UpdatePosition();
+  
 
 	// CollideWith returns true if this unit and other unit will collide (overlap)
 	bool CollideWith(const Unit& other) const;
+  bool IsAtEdge() const;
 
 	void Draw(Suzu::Shader & shader);
-private:
+protected:
 	bool IsPositionPossible(int newX, int newY) const;
 
 	Suzu::Sprite mImage;
@@ -41,5 +45,6 @@ private:
 	int mSpeed;
 
 	Direction mDirection;
+  Direction mFacing;
 };
 

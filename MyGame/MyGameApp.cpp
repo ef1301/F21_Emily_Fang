@@ -3,9 +3,31 @@
 MyGameApp::MyGameApp(): mHero("Assets/Textures/Hero.png",0,0,10),
 mFrameCounter{ 0 }
 {
-	mShader.Load("Assets/Shaders/myVertexShader.glsl",
+	mLeftShader.Load("Assets/Shaders/myLeftVertexShader.glsl",
 		"Assets/Shaders/myFragmentShader.glsl");
-	mShader.SetVec2IntUniform("screenSize", 800, 800);
+	mLeftShader.SetVec2IntUniform("screenSize", 800, 800);
+
+	mRightShader.Load("Assets/Shaders/myRightVertexShader.glsl",
+		"Assets/Shaders/myFragmentShader.glsl");
+	mRightShader.SetVec2IntUniform("screenSize", 800, 800);
+}
+
+void NewMonster(std::vector<Monster>& monsters)
+{
+		int newX{ rand() % 700 };
+		int newY{ rand() % 700 };
+		Unit::Direction newDir;
+		int dirVal{ rand() % 4 };
+		if (dirVal == 0)
+			newDir = Unit::Direction::Down;
+		else if (dirVal == 1)
+			newDir = Unit::Direction::Up;
+		else if (dirVal == 2)
+			newDir = Unit::Direction::Left;
+		else if (dirVal == 3)
+			newDir = Unit::Direction::Right;
+		monsters.push_back(Monster{ "Assets/Textures/Monster.png",newX,newY, 10});
+		monsters.back().SetDirection(newDir);
 }
 
 void MyGameApp::OnUpdate()
@@ -20,35 +42,27 @@ void MyGameApp::OnUpdate()
 
 	// introduce new virus every second 
 	if (mFrameCounter % FRAMES_PER_SECOND == 0 && mMonsters.size()<10) {
-
-		int newX{ rand() % 700 };
-		int newY{ rand() % 700 };
-		Unit::Direction newDir;
-		int dirVal{ rand() % 4 };
-		if (dirVal == 0)
-			newDir = Unit::Direction::Down;
-		else if (dirVal == 1)
-			newDir = Unit::Direction::Up;
-		else if (dirVal == 2)
-			newDir = Unit::Direction::Left;
-		else if (dirVal == 3)
-			newDir = Unit::Direction::Right;
-		mMonsters.push_back(Unit{ "Assets/Textures/Monster.png",newX,newY, 10});
-		mMonsters.back().SetDirection(newDir);
+    NewMonster(mMonsters);
 	}
 
 	// check collisions
 	auto it = mMonsters.begin();
 	while(it!=mMonsters.end())
 	{
-		if (mHero.CollideWith(*it))
-			it = mMonsters.erase(it);
+    if (mHero.CollideWith(*it)) {
+      it = mMonsters.erase(it);
+    }
 		else it++;
 	}
 
 	for (auto& monsters : mMonsters)
-		monsters.Draw(mShader);
-	mHero.Draw(mShader);
+    {
+        if(monsters.GetFacing() == Unit::Direction::Left) monsters.Draw(mLeftShader);
+        else monsters.Draw(mRightShader);
+    }
+  
+  if(mHero.GetFacing() == Unit::Direction::Left) mHero.Draw(mLeftShader);
+  if(mHero.GetFacing() == Unit::Direction::Right) mHero.Draw(mRightShader);
 
 	mFrameCounter++;
 }
@@ -73,5 +87,6 @@ void MyGameApp::OnKeyPressed(Suzu::KeyPressedEvent& event)
 		//mHero.SetPosY(mHero.GetPosY() + mHero.GetSpeed());
 		mHero.SetDirection(Unit::Direction::Up);
 		break;
+    
 	}
 }

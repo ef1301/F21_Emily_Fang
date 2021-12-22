@@ -3,7 +3,7 @@
 Unit::Unit(const std::string& imageFile, int xPos, int yPos, int speed)
 	: mPosX(xPos), mPosY(yPos), 
 	mSpeed(speed), 
-	mDirection(Direction::None)
+	mDirection(Direction::Left)
 {
 	mImage.LoadImage(imageFile);
 }
@@ -53,6 +53,17 @@ void Unit::SetDirection(Unit::Direction newDirection)
 	mDirection = newDirection;
 }
 
+Unit::Direction Unit::GetFacing() const
+{
+	return mFacing;
+}
+
+void Unit::UpdateFacing()
+{
+  if(mDirection == Unit::Direction::Left) mFacing = mDirection;
+  if(mDirection == Unit::Direction:: Right) mFacing = mDirection;
+}
+
 void Unit::UpdatePosition()
 {
 	switch (mDirection)
@@ -70,6 +81,7 @@ void Unit::UpdatePosition()
 		if (IsPositionPossible(mPosX, mPosY - mSpeed)) mPosY -= mSpeed;
 		break;
 	}
+  UpdateFacing();
 }
 
 bool Unit::CollideWith(const Unit& other) const
@@ -103,6 +115,17 @@ bool Unit::IsPositionPossible(int newX, int newY) const
 		return false;
 	else 
 		return true;
+}
+
+bool Unit::IsAtEdge() const
+{
+  	if (mPosX <= 0 || mPosY <= 0 || 
+		(mPosX + mImage.GetWidth() >= 800) || 
+		(mPosY + mImage.GetHeight() >= 800)) 
+		return true;
+    else {
+      return false;
+    }
 }
 
 void Unit::Draw(Suzu::Shader& shader)

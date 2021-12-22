@@ -40,5 +40,5 @@ target_link_libraries(suzu_lib glfw glad stbi)
 
 include_directories(../glfw/include)
 include_directories(../Suzu)
-include_directoried(../glad/include)
+include_directories(../glad/include)
 include_directories(../stbi)

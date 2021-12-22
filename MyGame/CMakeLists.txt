@@ -1,4 +1,4 @@
-add_executable(my_game main.cpp MyGameApp.h MyGameApp.cpp Unit.h Unit.cpp)
+add_executable(my_game main.cpp MyGameApp.h MyGameApp.cpp Unit.h Unit.cpp Monster.cpp Monster.h)
 
 target_link_libraries(my_game suzu_lib)
 
@@ -6,6 +6,10 @@ set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/.. PROPERTY VS_STARTUP_PROJEC
 
 include_directories(../Suzu)
 
-file(COPY Assets DESTINATION ../MyGame)
-file(COPY Assets DESTINATION ${PROJECT_BINARY_DIR}/Debug)
-file(COPY Assets DESTINATION ${PROJECT_BINARY_DIR}/Release)
+if(WIN32)
+file(COPY Assets DESTINATION .)
+file(COPY Assets DESTINATION ${CMAKE_BINARY_DIR}/Debug/)
+file(COPY Assets DESTINATION ${CMAKE_BINARY_DIR}/Release/)
+else()
+file(COPY Assets DESTINATION ${CMAKE_BINARY_DIR})
+endif()

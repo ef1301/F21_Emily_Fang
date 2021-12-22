@@ -2,6 +2,7 @@
 
 #include "Suzu.h"
 #include "Unit.h"
+#include "Monster.h"
 
 class MyGameApp : public Suzu::SuzuApp
 {
@@ -12,8 +13,9 @@ public:
 
 private:
 	Unit mHero;
-	std::vector<Unit> mMonsters;
+	std::vector<Monster> mMonsters;
 	int mFrameCounter;
 
-	Suzu::Shader mShader;
+	Suzu::Shader mLeftShader;
+	Suzu::Shader mRightShader;
 };
