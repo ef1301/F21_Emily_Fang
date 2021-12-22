@@ -13,9 +13,11 @@ public:
 
 private:
 	Unit mHero;
+  Unit mBackground;
 	std::vector<Monster> mMonsters;
 	int mFrameCounter;
 
+  Suzu::Shader mShader;
 	Suzu::Shader mLeftShader;
 	Suzu::Shader mRightShader;
 };

@@ -1,8 +1,9 @@
 #include "MyGameApp.h"
 
 MyGameApp::MyGameApp(): mHero("Assets/Textures/Hero.png",0,0,10),
-mFrameCounter{ 0 }
-{
+                        mBackground("Assets/Textures/Background.png",0,0,0),
+                        mFrameCounter{ 0 }
+{ 
 	mLeftShader.Load("Assets/Shaders/myLeftVertexShader.glsl",
 		"Assets/Shaders/myFragmentShader.glsl");
 	mLeftShader.SetVec2IntUniform("screenSize", 800, 800);
@@ -10,6 +11,8 @@ mFrameCounter{ 0 }
 	mRightShader.Load("Assets/Shaders/myRightVertexShader.glsl",
 		"Assets/Shaders/myFragmentShader.glsl");
 	mRightShader.SetVec2IntUniform("screenSize", 800, 800);
+  
+  mBackground.Draw(mShader);
 }
 
 void NewMonster(std::vector<Monster>& monsters)
