@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/my_game.dir/main.cpp.o CMakeFiles/my_game.dir/MyGameApp.cpp.o CMakeFiles/my_game.dir/Unit.cpp.o CMakeFiles/my_game.dir/Monster.cpp.o -o ../my_game  -Wl,-rpath,/home/emilyf/F21_Emily_Fang/build/Suzu ../Suzu/libsuzu_lib.so ../glfw/src/libglfw3.a -lpthread /usr/lib/librt.so -lm -ldl ../glad/libglad.a ../stbi/libstbi.a 

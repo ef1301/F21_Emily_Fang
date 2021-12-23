@@ -8,6 +8,8 @@ public:
 	Unit() = delete;
 	Unit(const std::string & imageFile, 
 		int xPos, int yPos, int speed);
+	Unit(const std::string & imageFile, 
+		int xPos, int yPos);
 	int GetUnitWidth() const;
 	int GetUnitHeight() const;
 	void SetPosX(int newX);

@@ -8,6 +8,14 @@ Unit::Unit(const std::string& imageFile, int xPos, int yPos, int speed)
 	mImage.LoadImage(imageFile);
 }
 
+Unit::Unit(const std::string& imageFile, int xPos, int yPos)
+	: mPosX(xPos), mPosY(yPos), 
+	mSpeed(0), 
+	mDirection(Direction::None)
+{
+	mImage.LoadImage(imageFile);
+}
+
 int Unit::GetUnitWidth() const
 {
 	return mImage.GetWidth();

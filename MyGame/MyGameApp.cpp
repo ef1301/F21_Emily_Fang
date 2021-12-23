@@ -1,9 +1,13 @@
 #include "MyGameApp.h"
 
 MyGameApp::MyGameApp(): mHero("Assets/Textures/Hero.png",0,0,10),
-                        mBackground("Assets/Textures/Background.png",0,0,0),
+                        mBackground("Assets/Textures/Background.png",0,0),
                         mFrameCounter{ 0 }
-{ 
+{
+  mShader.Load("Assets/Shaders/myVertexShader.glsl",
+		"Assets/Shaders/myFragmentShader.glsl");
+	mShader.SetVec2IntUniform("screenSize", 800, 800);
+  
 	mLeftShader.Load("Assets/Shaders/myLeftVertexShader.glsl",
 		"Assets/Shaders/myFragmentShader.glsl");
 	mLeftShader.SetVec2IntUniform("screenSize", 800, 800);
@@ -12,7 +16,6 @@ MyGameApp::MyGameApp(): mHero("Assets/Textures/Hero.png",0,0,10),
 		"Assets/Shaders/myFragmentShader.glsl");
 	mRightShader.SetVec2IntUniform("screenSize", 800, 800);
   
-  mBackground.Draw(mShader);
 }
 
 void NewMonster(std::vector<Monster>& monsters)
@@ -48,6 +51,7 @@ Unit::Direction RandomDirection() {
 
 void MyGameApp::OnUpdate()
 {
+  mBackground.Draw(mShader);
 	mHero.UpdatePosition();
 
 	// update existing viruses
