@@ -32,7 +32,7 @@ void NewMonster(std::vector<Monster>& monsters)
 			newDir = Unit::Direction::Left;
 		else if (dirVal == 3)
 			newDir = Unit::Direction::Right;
-		monsters.push_back(Monster{ "Assets/Textures/Monster.png",newX,newY, 10});
+		monsters.push_back(Monster{ "Assets/Textures/Monster.png",newX,newY,10});
 		monsters.back().SetDirection(newDir);
 }
 
