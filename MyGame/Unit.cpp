@@ -118,7 +118,7 @@ bool Unit::CollideWith(const Unit& other) const
 bool Unit::IsPositionPossible(int newX, int newY) const
 {
 	if (newX < 0 || newY < 0 || 
-		(newX + mImage.GetWidth() > 800) || 
+		(newX + mImage.GetWidth() > 1200) || 
 		(newY + mImage.GetHeight() > 800)) 
 		return false;
 	else 
@@ -128,7 +128,7 @@ bool Unit::IsPositionPossible(int newX, int newY) const
 bool Unit::IsAtEdge() const
 {
   	if (mPosX <= 0 || mPosY <= 0 || 
-		(mPosX + mImage.GetWidth() >= 800) || 
+		(mPosX + mImage.GetWidth() >= 1200) || 
 		(mPosY + mImage.GetHeight() >= 800)) 
 		return true;
     else {

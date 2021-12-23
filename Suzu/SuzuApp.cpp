@@ -25,8 +25,6 @@ namespace Suzu {
 
 			OnUpdate();
 
-			// Renderer::Draw(fish, 100, 50, fish.GetWidth(), fish.GetHeight(), myShader);
-
 			std::this_thread::sleep_until(mTimeOfNextFrame);
 
 			mGameWindow.SwapBuffers();
@@ -61,7 +59,7 @@ namespace Suzu {
 
 	SuzuApp::SuzuApp()
 	{
-		mGameWindow.CreateWindow(800, 800, "Game");
+		mGameWindow.CreateWindow(1200, 900, "Game");
 
 		mGameWindow.SetKeyPressedCallback([this](KeyPressedEvent& event) {
 			OnKeyPressed(event);

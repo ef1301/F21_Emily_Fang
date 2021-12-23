@@ -6,24 +6,25 @@ MyGameApp::MyGameApp(): mHero("Assets/Textures/Hero.png",0,0,10),
 {
   mShader.Load("Assets/Shaders/myVertexShader.glsl",
 		"Assets/Shaders/myFragmentShader.glsl");
-	mShader.SetVec2IntUniform("screenSize", 800, 800);
+	mShader.SetVec2IntUniform("screenSize", 1200, 800);
   
 	mLeftShader.Load("Assets/Shaders/myLeftVertexShader.glsl",
 		"Assets/Shaders/myFragmentShader.glsl");
-	mLeftShader.SetVec2IntUniform("screenSize", 800, 800);
+	mLeftShader.SetVec2IntUniform("screenSize", 1200, 800);
 
 	mRightShader.Load("Assets/Shaders/myRightVertexShader.glsl",
 		"Assets/Shaders/myFragmentShader.glsl");
-	mRightShader.SetVec2IntUniform("screenSize", 800, 800);
+	mRightShader.SetVec2IntUniform("screenSize", 1200, 800);
   
 }
 
 void NewMonster(std::vector<Monster>& monsters)
 {
-		int newX{ rand() % 700 };
-		int newY{ rand() % 700 };
+		int newX{ rand() % 1000 };
+		int newY{ rand() % 500 };
 		Unit::Direction newDir;
 		int dirVal{ rand() % 4 };
+    int monsterVal{ rand() % 4 };
 		if (dirVal == 0)
 			newDir = Unit::Direction::Down;
 		else if (dirVal == 1)
@@ -32,7 +33,15 @@ void NewMonster(std::vector<Monster>& monsters)
 			newDir = Unit::Direction::Left;
 		else if (dirVal == 3)
 			newDir = Unit::Direction::Right;
-		monsters.push_back(Monster{ "Assets/Textures/Monster.png",newX,newY,10});
+    
+    if (monsterVal == 0)
+      monsters.push_back(Monster{ "Assets/Textures/Mushroom.png",newX,newY,10});
+    else if (monsterVal == 1)
+      monsters.push_back(Monster{ "Assets/Textures/Monster.png",newX,newY,15});
+    else if (monsterVal == 2)
+      monsters.push_back(Monster{ "Assets/Textures/Dragon.png",newX,newY,7});
+    else
+      monsters.push_back(Monster{ "Assets/Textures/Lizard.png",newX,newY,10});
 		monsters.back().SetDirection(newDir);
 }
 
