@@ -1,4 +1,9 @@
-add_executable(my_game main.cpp MyGameApp.h MyGameApp.cpp Unit.h Unit.cpp Monster.cpp Monster.h)
+add_executable(my_game main.cpp
+MyGameApp.h MyGameApp.cpp
+Unit.h Unit.cpp
+Hero.h Hero.cpp
+Monster.cpp Monster.h
+Projectile.h Projectile.cpp)
 
 target_link_libraries(my_game suzu_lib)
 

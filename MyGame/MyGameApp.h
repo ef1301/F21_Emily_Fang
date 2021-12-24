@@ -2,6 +2,7 @@
 
 #include "Suzu.h"
 #include "Unit.h"
+#include "Hero.h"
 #include "Monster.h"
 
 class MyGameApp : public Suzu::SuzuApp
@@ -12,7 +13,7 @@ public:
 	virtual void OnKeyPressed(Suzu::KeyPressedEvent& event) override;
 
 private:
-	Unit mHero;
+	Hero mHero;
   Unit mBackground;
 	std::vector<Monster> mMonsters;
 	int mFrameCounter;

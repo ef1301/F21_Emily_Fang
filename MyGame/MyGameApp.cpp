@@ -15,7 +15,7 @@ MyGameApp::MyGameApp(): mHero("Assets/Textures/Hero.png",0,0,10),
 	mRightShader.Load("Assets/Shaders/myRightVertexShader.glsl",
 		"Assets/Shaders/myFragmentShader.glsl");
 	mRightShader.SetVec2IntUniform("screenSize", 1200, 800);
-  
+
 }
 
 void NewMonster(std::vector<Monster>& monsters)
@@ -79,6 +79,7 @@ void MyGameApp::OnUpdate()
   
   if(mHero.GetFacing() == Unit::Direction::Left) mHero.Draw(mLeftShader);
   if(mHero.GetFacing() == Unit::Direction::Right) mHero.Draw(mRightShader);
+  mHero.UpdateBullets(mLeftShader);
 
 	mFrameCounter++;
 }
@@ -103,6 +104,8 @@ void MyGameApp::OnKeyPressed(Suzu::KeyPressedEvent& event)
 		//mHero.SetPosY(mHero.GetPosY() + mHero.GetSpeed());
 		mHero.SetDirection(Unit::Direction::Up);
 		break;
-    
+  case SUZU_KEY_SPACE:
+    mHero.Shoot();
+    break;
 	}
 }
