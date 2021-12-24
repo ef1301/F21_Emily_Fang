@@ -3,3 +3,4 @@ Unique Game Features:
  - Monsters can move diagonally (not limited to up,down,left,right)
  - Monsters and Hero faceteh direction they are moving in (left and right)
  - Background
+ - Hero shoots stars
